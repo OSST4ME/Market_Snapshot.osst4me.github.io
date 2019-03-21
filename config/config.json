@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "student",
+    "database": "market_snapshot",
     "host": "localhost",
     "dialect": "mysql"
   },
