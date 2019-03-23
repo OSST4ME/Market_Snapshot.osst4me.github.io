@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var looper;
+var degrees = 70;
+function rotateAnimation(el,speed){
+	var elem = document.getElementById(el);
+	if(navigator.userAgent.match("Chrome")){
+		elem.style.WebkitTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Firefox")){
+		elem.style.MozTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("MSIE")){
+		elem.style.msTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Opera")){
+		elem.style.OTransform = "rotate("+degrees+"deg)";
+	} else {
+		elem.style.transform = "rotate("+degrees+"deg)";
+	}
+	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+	degrees++;
+	if(degrees > 270){
+		degrees = 270;
+	}
+	document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
+}
+</script>
+</head>
+<body>
+<img id="img1" src="public/images/magGLass.PNG" alt="magGLass" class="popOver">
+<script>rotateAnimation("img1",5);</script>
+<!-- <h2 style="width:100px;" id="status"></h2> -->
+
+<img id="house" src="public/images/house.PNG" alt="House">
+<script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</body>  
+</html>

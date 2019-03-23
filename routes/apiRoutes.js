@@ -1,24 +1,51 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Load index page
+  app.get("/", function(req, res) {
+    db.Housing.findAll({
+      where: {zip: "SD"}
+    }).then(function(dbExamples) {
+      var availableZipsArray = [];
+      for (i=0; i<96; i++){
+        availableZipsArray.push(dbExamples[i].Zip_Concat)
+      }
+      res.render("index", {
+        availableZips: availableZipsArray
+      });
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Load example page and pass in an example by id
+  app.get("/housing/:zip", function(req, res) {
+    db.Housing.findAll({ where: { Zip_Concat: req.params.zip } }).then(function(dbReturn) {
+      var dbLength = dbReturn.length - 1;
+      console.log("Our return lenghts latest month is at position " + dbLength)
+      res.render("example", {
+        houseSales: dbReturn[dbLength].House_Units,
+        medianHouse: dbReturn[dbLength].House_Price,
+        houseYear: dbReturn[dbLength].House_Percent,
+        //return all data for the months for the charts
+        condoSales: dbReturn[dbLength].Condo_Units,
+        medianCondo: dbReturn[dbLength].Condo_Price,
+        condoYear: dbReturn[dbLength].Condo_Percent,
+      });
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  app.post("/housing/:zip", function(req,res){
+    db.Comment.create({
+      Zip_Concat: req.params.zip,
+      CommentText: req.body.comment,
+      Email: req.body.email
+    }).then(function(dbReturn){
+      res.json(dbReturn)
+    })
+  })
+
+  // Render 404 page for any unmatched routes
+  app.get("*", function(req, res) {
+    res.render("404");
   });
 };
+
