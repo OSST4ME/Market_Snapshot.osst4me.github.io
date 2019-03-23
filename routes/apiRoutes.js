@@ -1,51 +1,76 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     db.Housing.findAll({
-      where: {zip: "SD"}
-    }).then(function(dbExamples) {
-      var availableZipsArray = [];
-      for (i=0; i<96; i++){
-        availableZipsArray.push(dbExamples[i].Zip_Concat)
+      where: {
+        Zip: "SD"
       }
-      res.render("index", {
-        availableZips: availableZipsArray
-      });
+    }).then(function (dbExamples) {
+      res.json(dbExamples)
+      var availableZipsArray = [];
+      for (i = 0; i < 2; i++) {
+        availableZipsArray.push(dbExamples[i].zipConcat)
+      }
+      // res.render("index", {
+      //   availableZips: availableZipsArray
+      // });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/housing/:zip", function(req, res) {
-    db.Housing.findAll({ where: { Zip_Concat: req.params.zip } }).then(function(dbReturn) {
+  app.get("/housing/:zip", function (req, res) {
+    db.Housing.findAll({
+      where: {
+        Zip: req.params.zip
+      }
+    }).then(function (dbReturn) {
+      console.log("zip code return array returned: " + dbReturn)
       var dbLength = dbReturn.length - 1;
+      var chartMonths = [];
+      var houseChartMedian = [];
+      var houseChartSales = [];
+      var condoChartMedian = [];
+      var condoChartSales = [];
+      //get all the chart data
+      for (i = 0; i < dbReturn.length; i++) {
+        chartMonths.push(dbReturn[i].Month);
+        houseChartMedian.push(dbReturn[i].housePrice);
+        houseChartSales.push(dbReturn[i].houseUnits);
+        condoChartMedian.push(dbReturn[i].condoPrice);
+        condoChartSales.push(dbReturn[i].condoUnits)
+      }
       console.log("Our return lenghts latest month is at position " + dbLength)
       res.render("example", {
-        houseSales: dbReturn[dbLength].House_Units,
-        medianHouse: dbReturn[dbLength].House_Price,
-        houseYear: dbReturn[dbLength].House_Percent,
-        //return all data for the months for the charts
-        condoSales: dbReturn[dbLength].Condo_Units,
-        medianCondo: dbReturn[dbLength].Condo_Price,
-        condoYear: dbReturn[dbLength].Condo_Percent,
+        //all the data for the green headers
+        houseSales: dbReturn[dbLength].houseUnits,
+        medianHouse: dbReturn[dbLength].housePrice,
+        houseYear: dbReturn[dbLength].houseChange,
+        condoSales: dbReturn[dbLength].condoUnits,
+        medianCondo: dbReturn[dbLength].condoPrice,
+        condoYear: dbReturn[dbLength].condoChange,
+        //all the data for the charts
+        houseChartMedData: houseChartMedian,
+        houseChartSalesData: houseChartSales,
+        condoChartMedData: condoChartMedian,
+        condoChartSalesData: condoChartSales
       });
     });
   });
 
-  app.post("/housing/:zip", function(req,res){
+  app.post("/housing/:zip", function (req, res) {
     db.Comment.create({
-      Zip_Concat: req.params.zip,
-      CommentText: req.body.comment,
+      Zip: req.params.zip,
+      Comment_Text: req.body.comment,
       Email: req.body.email
-    }).then(function(dbReturn){
+    }).then(function (dbReturn) {
       res.json(dbReturn)
     })
   })
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };
-

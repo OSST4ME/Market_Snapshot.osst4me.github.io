@@ -1,14 +1,37 @@
 module.exports = function (sequelize, DataTypes) {
     var Housing = sequelize.define("Housing", {
+        City: DataTypes.STRING,
         Zip: DataTypes.STRING,
-        Zip_Concat: DataTypes.STRING,
-        House_Units: DataTypes.INTEGER,
-        House_Price: DataTypes.INTEGER,
-        House_Percent: DataTypes.INTEGER,
-        Condo_Units: DataTypes.INTEGER,
-        Condo_Price: DataTypes.INTEGER,
-        Condo_Percent: DataTypes.INTEGER,
-        Square_Feet: DataTypes.INTEGER,
+        zipConcat: DataTypes.STRING,
+        houseUnits: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        housePrice: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        houseChange: {
+            type: DataTypes.DECIMAL(10,3),
+            defaultValue: 0.000
+        },
+        houseFoot: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        condoUnits: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        condoPrice: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        condoChange: {
+            type: DataTypes.DECIMAL(10,3),
+            defaultValue: 0.000
+        },
+        
         Month: DataTypes.STRING
     });
     return Housing;
