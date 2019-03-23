@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Market Snapshot</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet"> -->
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+  <link href="public/styles/styles.css" rel="stylesheet">
+  <style>
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+<div class="logoContainer">
+  
+  <img src="public/images/logo.PNG" class="logo">
+  </div>
+
+
+<div class="container">   
+  <h4 class="h4">RESALE SINGLE FAMILY HOMES</h4> 
+  <div class="row">
+    <div class="col-md-4 displayNumbersLeft">
+      <h2 class="h2">1,410</h2>
+      <h3 class="h3">Number of Sales </h3>
+      </div>
+    
+    <div class="col-md-4 displayNumbers"> 
+      <h2 class="h2">$588,000</h2>
+           <h3 class="h3">Median sale price for January</h3>
+      </div>
+    
+    <div class="col-md-4 displayNumbers"> 
+    
+        <h2 class="h2">+4.1%</h2>
+           <h3 class="h3">Year-over-year change</h3>
+      </div>
+    </div>
+</div><br>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="box">
+            <div>
+              <canvas id="myChart" width="300" height="100"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+        label: 'Median Price over time',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+}
+});
+</script>
+          </div></div>
+    </div>
+    <div class="col-sm-6">
+        <div class="box">
+            <div>
+              <canvas id="chartjs-0" class="chartjs" width="1925" height="702" style="display: block; height: 385px; width: 770px;"></canvas>
+              <script>new Chart(document.getElementById("chartjs-0"),{"type":"line","data":{"labels":["January","February","March","April","May","June","July"],"datasets":[{"label":"Sales Over","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{}});</script>
+            </div>
+          </div>
+    </div>
+   
+
+
+
+</div>
+<!--end row-->
+<hr class="new4">
+<h4 class="h4">
+RESALE CONDIMINIUMS
+</h4>
+<div class="row">
+  <div class="col-md-4 displayNumbersLeft">
+    <h2 class="h2">592</h2>
+    <h3 class="h3">Number of Sales </h3>
+    </div>
+  
+  <div class="col-md-4 displayNumbers"> 
+    <h2 class="h2">$412,000</h2>
+         <h3 class="h3">Median sale price for January</h3>
+    </div>
+  
+  <div class="col-md-4 displayNumbers"> 
+  
+      <h2 class="h2">+.05%</h2>
+         <h3 class="h3">Year-over-year change</h3>
+    </div>
+  </div>
+<br>
+
+<hr class="new4">
+<h4 class="h4">
+COMMENTS
+</h4>
+</div>
+
+</footer>
+
+</body>
+</html>
