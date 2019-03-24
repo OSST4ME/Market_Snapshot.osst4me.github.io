@@ -34,5 +34,11 @@ module.exports = function (sequelize, DataTypes) {
         
         Month: DataTypes.STRING
     });
+    Housing.associate = function(models) {
+        //associating a housing record with a comment
+        Housing.hasMany(models.Comment, {
+           
+        })
+    }
     return Housing;
 };

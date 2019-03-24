@@ -6,16 +6,44 @@ module.exports = function (app) {
     db.Housing.findAll({
       where: {
         Zip: "SD"
-      }
-    }).then(function (dbExamples) {
-      res.json(dbExamples)
+      },
+      include: [db.Comment]
+    }).then(function (dbReturn) {
+      var dbLength = dbReturn.length - 1;
+      res.json(dbReturn)
       var availableZipsArray = [];
-      for (i = 0; i < 2; i++) {
-        availableZipsArray.push(dbExamples[i].zipConcat)
+      var chartMonths = [];
+      var houseChartMedian = [];
+      var houseChartSales = [];
+      var condoChartMedian = [];
+      var condoChartSales = [];
+      //get all the chart data and put into arrays for the chart.js format
+      for (i = 0; i < dbReturn.length; i++) {
+        chartMonths.push(dbReturn[i].Month);
+        houseChartMedian.push(dbReturn[i].housePrice);
+        houseChartSales.push(dbReturn[i].houseUnits);
+        condoChartMedian.push(dbReturn[i].condoPrice);
+        condoChartSales.push(dbReturn[i].condoUnits)
+        //get all the comments
+
       }
-      // res.render("index", {
-      //   availableZips: availableZipsArray
-      // });
+      for (i = 0; i < 2; i++) {
+        availableZipsArray.push(dbReturn[i].zipConcat)
+      }
+      console.log(availableZipsArray)
+      res.render("index", {
+        availableZips: availableZipsArray,
+        houseSales: dbReturn[dbLength].houseUnits,
+        medianHouse: dbReturn[dbLength].housePrice,
+        houseYear: dbReturn[dbLength].houseChange,
+        condoSales: dbReturn[dbLength].condoUnits,
+        medianCondo: dbReturn[dbLength].condoPrice,
+        condoYear: dbReturn[dbLength].condoChange,
+        houseChartMedData: houseChartMedian,
+        houseChartSalesData: houseChartSales,
+        condoChartMedData: condoChartMedian,
+        condoChartSalesData: condoChartSales
+      });
     });
   });
 
@@ -23,7 +51,7 @@ module.exports = function (app) {
   app.get("/housing/:zip", function (req, res) {
     db.Housing.findAll({
       where: {
-        Zip: req.params.zip
+        zipConcat: req.params.zip
       }
     }).then(function (dbReturn) {
       console.log("zip code return array returned: " + dbReturn)
@@ -61,7 +89,7 @@ module.exports = function (app) {
 
   app.post("/housing/:zip", function (req, res) {
     db.Comment.create({
-      Zip: req.params.zip,
+      zipConcat: req.params.zip,
       Comment_Text: req.body.comment,
       Email: req.body.email
     }).then(function (dbReturn) {

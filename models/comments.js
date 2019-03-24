@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Comment = sequelize.define("Comment", {
-        Zip: DataTypes.STRING,
+        zipConcat: DataTypes.STRING,
         Comment_Text: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -8,7 +8,19 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        Email: DataTypes.STRING
+        Email: {
+            type: DataTypes.STRING,
+            validate: {
+                isEmail: true
+            }
+        }
     });
+    Comment.associate = function(models){
+        Comment.belongsTo(models.Housing, {
+            //a comment should belong to a Housing
+            
+        });
+    }
+
     return Comment;
 };
