@@ -21,24 +21,27 @@
   </style>
 </head>
 <body>
-  <div class="container text-center">
+
+       
+    <div class="container text-center">
 <div class="logoContainer">
   
-  <img src="public/images/logo.PNG" class="logo">
-  </div>
-
-
-<div class="container">   
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a ZIP Code
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu list-inline">
-          <li><a href="#">92117</a></li>
-          <li><a href="#">92111</a></li>
-          <li><a href="#">92116</a></li>
-        </ul>
-      </div>
-    
+  <img src="public/images/Market_snap_logo.PNG" class="logo">
+ 
+    <div id="option-selection">
+        <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Choose a ZIP Code
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">92121</a></li>
+                  <li><a href="#">92117</a></li>
+                  <li><a href="#">92120</a></li>
+        
+                </ul>
+              </div>
+            </div>
   <h4 class="h4">RESALE SINGLE FAMILY HOMES</h4> 
   <div class="row">
     <div class="col-md-4 displayNumbersLeft">
@@ -107,16 +110,10 @@ RESALE CONDIMINIUMS
 COMMENTS
 </h4>
 </div>
-<footer>
-<div id="approvedComments"></div>
-<!-- figure out how to get comments in these divs, but only have 4 on display using mysql-->
-<div class="row">
-<div class="col-3-md"></div>
-<div class="col-3-md"></div>
-<div class="col-3-md"></div>
-<div class="col-3-md"></div>
+<div id="approvedComments">
 
 </div>
+<div class="commentFormSection">
 <form>
     <div class="form-group">
 
@@ -124,18 +121,32 @@ COMMENTS
     </div>
 
   </form>
-<form class="form-inline">
+  <div class="input-bar">
+        <div class="input-bar-item width100">
+          <form>
+             <div class="form-group">
+                <input class="form-control width100 "placeholder="Email address (required)">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+          <button class="btn btn-success btn-primary">SUBMIT</button>
+        </div>
+      </div></div>
+<!--  This form section is here for reference as alternate way to get submit button inline.
+  <form class="form-inline">
     <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
-    <div class="input-group mb-2 mr-sm-2 col-lg-6 col-md-6 col-sm-12">
-    
-      <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Email address (required)">
+    <div class="input-group mb-2 mr-sm-2 col-lg-9 col-md-9 col-sm-12">
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Email address (required)">
     </div>
-  
     </div>
-  
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-  </form>
+    <button type="submit" class="btn btn-success btn-primary mb-2">Submit</button>
+  </form> -->
 </div>
+<!--end container-->
+<footer>
+  <p> This data was compiled by CoreLogic and is derived from official San Diego records and includes nearly all sales. The median price is the midpoint of home values, with half being above and half below the listed number.</p>
+ <p> &copy; 2019</p>
 </footer>
 <!--CHART.JS SCRIPT-->
 <script>
@@ -162,7 +173,7 @@ COMMENTS
             display: true,
             text: '          Median home sale price (thousands)',
             fontFamily: "'Lato', regular",
-            fontSize: 14,
+            fontSize: 18,
             fontColor: '#000000'
         },
         scales: {
@@ -205,7 +216,7 @@ var chart = new Chart(ctx, {
             display: true,
             text: '          Number of homes sold',
             fontFamily: "'Lato', regular",
-            fontSize: 14,
+            fontSize: 18,
             fontColor: '#000000'
         },
         scales: {
@@ -243,7 +254,7 @@ var ctx = document.getElementById('price_condo').getContext('2d');
             display: true,
             text: '          Median condo sale price (thousands)',
             fontFamily: "'Lato', regular",
-            fontSize: 14,
+            fontSize: 18,
             fontColor: '#000000'
         },
         scales: {
@@ -286,7 +297,7 @@ var chart = new Chart(ctx, {
             display: true,
             text: '          Number of condos sold',
             fontFamily: "'Lato', regular",
-            fontSize: 14,
+            fontSize: 18,
             fontColor: '#000000'
         },
         scales: {
