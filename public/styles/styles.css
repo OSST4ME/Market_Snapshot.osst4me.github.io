@@ -1,19 +1,25 @@
+footer {
+  margin-top: 30px;
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
 .logo{
-  max-width: 90%;
+  max-width: 80%;
+  margin-top: 10px;
 }
 
 .h2{
   font-family: 'Lato';
-  font-size: 90px;
-  font-style: normal;
-  font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh50XSwaPGR_p.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-size: 60px;
+  font-weight: 700;
   color: #008000;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 hr.new4 {
@@ -21,82 +27,52 @@ hr.new4 {
 }
 
 .h3{
-  
   font-family: 'Lato';
-  font-style: normal;
+  font-weight: 300;
+  font-size: 23px;
+  margin-top: 0px;
+}
+
+.h4{
+  font-family: 'Lato';
   font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh50XSwiPGQ.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-size: 30px;
 }
 
-.h4{
+.btn {
+  border-radius: 0px;
   font-family: 'Lato';
-  font-weight: 700;
+  font-weight: 900;
 }
 
-/* START Column Width  */
-.displayNumbersLeft{
-  margin: 0, 30px, 0, 0px;
+.options {
+  margin-top: 0px;
+  border-radius: 0;
 }
 
-.displayNumbersCenter{
-  margin: 0, 30px, 0, 30px;
-}
-.displayNumbersRight{
-  margin: 0, 0px, 0, 30px;
-}
-.h4{
-  font-size: 40px;
-}
-/* END Column Width  */
-
-/* START LOGO Animation */
-
-#house{
-  z-index:-1;
+.container {
+  max-width: 960px;
 }
 
-.popOver{
-  z-index: 2;
-}
-.popOver{
-    transition: transform 1s;
-    transform: scaleX(0) scaleY(0);
-  }
-  .popOver {
-    transform: scaleX(1) scaleY(1);
-  }
-
-/* .popOver {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  background-color: #d9dfe5;
-  -webkit-animation: bummer 2s;
-  animation: bummer 2s;
-  -webkit-transform: scale(0,0); 
-  transform: scale(0,0);
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;  */
-  /* Add this so that your modal doesn't 
-                                    close after the animation completes */
-/* }
-
-@-webkit-keyframes bummer {
-  100% {
-      -webkit-transform: scale(1,1); 
-  }
+.form-control {
+  border-radius: 0px;
 }
 
-@keyframes bummer {
-  100% {
-      transform: scale(1,1); 
-  }
-} */
+.row-chart {
+  margin-top: 10px; 
+}
 
+.padding {
+  padding-left: 1px
+}
 
-/* END LOGO ANIMATION */
+#pub-comment {
+  text-align: left;
+}
 
+#pub-email {
+  color:#008000;
+}
 
 /* START COMMENT SECTION */
 * {box-sizing: border-box;}
@@ -124,7 +100,6 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-/* END COMMENT SECTION */
 
 
 /* CSS used here will be applied after bootstrap.css */
@@ -138,37 +113,4 @@ input[type=submit]:hover {
 #option-selection .dropdown {
   display:inline-block;
 }
-
-/* Put your css in here */
-.input-bar {
-  display: table;
-  width: 100%;
-}
-
-.input-bar-item {
-  display: table-cell;
-}
-
-.input-bar-item > button {
-  margin-left: 5px;
-}
-  
-.width100 {
-width: 100%;
-}
-
-
- /* .btn-primary{
-width:24%;
-font-family: 'Lato';
-font-size: 20px;
-font-style: bold;
-font-weight: 90;
-src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh50XSwaPGR_p.woff2) format('woff2');
-}  */
-/* 
-#submitButton{
-  width: 25%
-}
- */
 
