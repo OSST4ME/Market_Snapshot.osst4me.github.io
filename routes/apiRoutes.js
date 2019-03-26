@@ -151,7 +151,7 @@ module.exports = function (app) {
         zipConcat: req.params.zip
       }
     }).then(function (dbReturn) {
-      
+      console.log("it returned the data");
       var dbLength = dbReturn.length - 1;
       console.log("db length -1 is" + dbLength)
       var chartMonths = [];
@@ -186,13 +186,13 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/housing/:zip", function (req, res) {
+  app.post("/housing/:zip/:id", function (req, res) {
     db.Comment.create({
       zipConcat: req.params.zip,
       Comment_Text: req.body.comment,
       Email: req.body.email
     }).then(function (dbReturn) {
-      res.redirect("/housing/:zip")
+      res.redirect("/housing/:zip/:id")
     })
   })
 

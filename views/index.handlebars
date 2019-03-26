@@ -108,15 +108,18 @@
 
 <!--CHART.JS SCRIPT-->
 <script>
-  var zipElement = document.getElementById("zipSearch");
-  zipElement.onclick = function (event) {
+  $("#zipSearch").on("click", function(){
   
-  var selectedZip = document.getElementById("zip_code").value;
-  
-    fetch('/housing/' + selectedZip)
-  
+  var pickedZip  = $("#zip_code").val();
+  console.log(pickedZip)
+  $.ajax({
+    method: "GET",
+    url: "/housing/" + pickedZip,
+  success: function (data){
+    window.location.href = window.location.origin + "/housing/" + pickedZip
   }
 
+})});
 
   var ctx = document.getElementById('price_house').getContext('2d');
   var chart = new Chart(ctx, {
