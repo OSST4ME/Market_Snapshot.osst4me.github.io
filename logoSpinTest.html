@@ -24,12 +24,20 @@ function rotateAnimation(el,speed){
 	}
 	document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
 }
+
+
 </script>
+
 </head>
 <body>
 <img id="img1" src="public/images/magGLass.PNG" alt="magGLass" class="popOver">
-<script>rotateAnimation("img1",5);</script>
+<script>rotateAnimation("img1",5);
+$("img1").load(function() {
+  $(this).addClass("loaded");
+});
+</script>
 <!-- <h2 style="width:100px;" id="status"></h2> -->
+
 
 <img id="house" src="public/images/house.PNG" alt="House">
 <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>

@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Market Snapshot</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!--Jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--Bootstrap js-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet"> -->
-  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <!--Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <!--Chart.js-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+  <!--CSS-->
   <link href="public/styles/styles.css" rel="stylesheet">
-  <style>
-   
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-  </style>
 </head>
+
 <body>
   <div class="container text-center">
-<div class="logoContainer">
-  
-  <img src="public/images/logo.PNG" class="logo">
-  </div>
-
-
-<div class="container">   
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a ZIP Code
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu list-inline">
-          <li><a href="#">92117</a></li>
-          <li><a href="#">92111</a></li>
-          <li><a href="#">92116</a></li>
-        </ul>
+    <div class="logoContainer">
+      <img src="public/images/Market_snap_logo.PNG" class="logo">
+    </div>
+    <!--drop down menu zip codes-->
+    <br>
+    <form action="/xxxxx/xxxxxx" method="GET">
+      <div class="row">
+        <div class="col-lg-10"> 
+            <select class="form-control options" id="zip_code">
+              <option value="{{}}">Choose a ZIP Code</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+        </div>   
+        <div class="col-lg-2 padding"> 
+          <button type="submit" class="btn btn-block btn-dark">SUBMIT</button>
+        </div> 
       </div>
-    
-  <h4 class="h4">RESALE SINGLE FAMILY HOMES</h4> 
-  <div class="row">
-    <div class="col-md-4 displayNumbersLeft">
-      <h2 class="h2">1,410</h2>
-      <h3 class="h3">Number of Sales </h3>
+    </form>
+    <!--homes-->
+    <hr class="new4">
+    <h4 class="h4">SINGLE-FAMILY HOMES</h4>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
+        <h2 class="h2">1,410</h2>
+        <h3 class="h3">Number of sales</h3>
       </div>
-    
-    <div class="col-md-4 displayNumbers"> 
-      <h2 class="h2">$588,000</h2>
-           <h3 class="h3">Median sale price for January</h3>
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
+        <h2 class="h2">$588,000</h2>
+        <h3 class="h3">Median sale price for January</h3>
       </div>
-    
-    <div class="col-md-4 displayNumbers"> 
-    
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
         <h2 class="h2">+4.1%</h2>
-           <h3 class="h3">Year-over-year change</h3>
+        <h3 class="h3">Year-over-year change</h3>
       </div>
     </div>
+<<<<<<< HEAD
 </div><br>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -81,22 +84,44 @@ RESALE CONDIMINIUMS
   <div class="col-md-4 displayNumbers"> 
     <h2 class="h2">$412,000</h2>
          <h3 class="h3">Median sale price for January</h3>
+=======
+    <!--home charts-->
+    <div class="row row-chart">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <canvas id="price_house" height="200"></canvas>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <canvas id="unit_house" height="200"></canvas>
+      </div>
+>>>>>>> master
     </div>
-  
-  <div class="col-md-4 displayNumbers"> 
-  
-      <h2 class="h2">+.05%</h2>
-         <h3 class="h3">Year-over-year change</h3>
+    <!--condos-->
+    <hr class="new4">
+    <h4 class="h4">CONDOMINIUMS</h4>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
+        <h2 class="h2">592</h2>
+        <h3 class="h3">Number of sales</h3>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
+        <h2 class="h2">$412,000</h2>
+        <h3 class="h3">Median sale price for January</h3>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 display-number">
+        <h2 class="h2">+.05%</h2>
+        <h3 class="h3">Year-over-year change</h3>
+      </div>
     </div>
-  </div>
-<br>
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
+    <!--home charts-->
+    <div class="row row-chart">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <canvas id="price_condo" height="200"></canvas>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <canvas id="unit_condo" height="200"></canvas>
+      </div>
     </div>
+<<<<<<< HEAD
 </div>
 <hr class="new4">
 <h4 class="h4">
@@ -154,166 +179,196 @@ COMMENTS
 
 <!--CHART.JS SCRIPT-->
 <script>
+=======
+    <!--comments-->
+    <hr class="new4">
+    <h4 class="h4">COMMENTS</h4>
+    <form action="/xxxxx/xxxxxx" method="POST">
+      <div class="form-group">
+        <textarea class="form-control" id="comment" rows="3" placeholder="Tell us what you love about the neighborhood."></textarea>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 form-group">
+          <input type="email" class="form-control" id="email" placeholder="Email address (required)">
+        </div>
+          <div class="col-lg-2 padding">
+            <button type="submit" class="btn btn-block btn-secondary">SUBMIT</button>
+          </div>
+      </div>    
+    </form>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <p id="pub-comment">OMG! I LOVE NORTHPARK! The restaurants are great and you can walk everywhere. There is a ton of stuff to do. Blah blah blah blah blah blah.<strong id="pub-email"> email@address</strong></p>
+          <p id="pub-comment">OMG! I LOVE DOWNTOWN! The restaurants are great and you can walk everywhere. There is a ton of stuff to do. Blah blah blah blah blah blah.<strong id="pub-email"> email@address</strong></p>
+        </div>  
+      </div>
+      <!--footer-->
+    <footer>
+        <p>This data was compiled by CoreLogic and is derived from official San Diego records and includes nearly all sales. It does not include new construction. The median price is the midpoint of home values, with half being above and half below.
+        </p>
+        <p> &copy; 2019 GROUP NAME: Corbin Felsheim, James Ravenscroft, Gregory Schmidt & Gina Washington</p>
+      </footer>
+  </div>
+  
+
+  <!--CHART.JS SCRIPT-->
+  <script>
+>>>>>>> master
     var ctx = document.getElementById('price_house').getContext('2d');
     var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'bar',
-
-    // The data for our dataset
-    data: {
-        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.', '2019 Jan.'],
+      // The type of chart we want to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.',
+          'Dec.', '2019 Jan.'
+        ],
         datasets: [{
-            backgroundColor: '#008000',
-            data: [565, 580, 609, 611, 620, 630, 630, 629, 615, 610, 605, 595, 588]
+          backgroundColor: '#008000',
+          data: [565, 580, 609, 611, 620, 630, 630, 629, 615, 610, 605, 595, 588]
         }]
-    },
-
-    // Configuration options go here
-    options: {
+      },
+      // Configuration options go here
+      options: {
         legend: {
-            display: false,
+          display: false,
         },
         title: {
-            display: true,
-            text: '          Median home sale price (thousands)',
-            fontFamily: "'Lato', regular",
-            fontSize: 14,
-            fontColor: '#000000'
+          display: true,
+          text: '            Median sale price (thousands)',
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontColor: '#000000'
         },
         scales: {
-            yAxes: [{
-                ticks: {
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return '$' + value;
-                    },
-                    suggestedMin: 0,
-                    suggestedMax: 700
-                }
-            }]
+          yAxes: [{
+            ticks: {
+              // Include a dollar sign in the ticks
+              callback: function (value, index, values) {
+                return '$' + value;
+              },
+              suggestedMin: 0,
+              suggestedMax: 700
+            }
+          }]
         }
-    }
-        
-    
-});
+      }
+    });
 
-var ctx = document.getElementById('unit_house').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'bar',
-
-    // The data for our dataset
-    data: {
-        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.', '2019 Jan.'],
-        datasets: [{
-            backgroundColor: '#008000',
-            data: [1588, 1630, 2126, 2258, 2470, 2403, 2314, 2322, 1820, 1989, 1790, 1673, 1410]
-        }]
-    },
-
-    // Configuration options go here
-    options: {
-        legend: {
-            display: false,
-        },
-        title: {
-            display: true,
-            text: '          Number of homes sold',
-            fontFamily: "'Lato', regular",
-            fontSize: 14,
-            fontColor: '#000000'
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 2500
-                }
-            }]
-        }
-        
-    }
-});
-
-var ctx = document.getElementById('price_condo').getContext('2d');
+    var ctx = document.getElementById('unit_house').getContext('2d');
     var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'bar',
-
-    // The data for our dataset
-    data: {
-        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.', '2019 Jan.'],
+      // The type of chart we want to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.',
+          'Dec.', '2019 Jan.'
+        ],
         datasets: [{
-            backgroundColor: '#008000',
-            data: [410, 426, 418, 430, 428, 430, 432, 429, 428, 415, 400, 405, 412]
+          backgroundColor: '#008000',
+          data: [1588, 1630, 2126, 2258, 2470, 2403, 2314, 2322, 1820, 1989, 1790, 1673, 1410]
         }]
-    },
-
-    // Configuration options go here
-    options: {
+      },
+      // Configuration options go here
+      options: {
         legend: {
-            display: false,
+          display: false,
         },
         title: {
-            display: true,
-            text: '          Median condo sale price (thousands)',
-            fontFamily: "'Lato', regular",
-            fontSize: 14,
-            fontColor: '#000000'
+          display: true,
+          text: '          Number of sales',
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontColor: '#000000'
         },
         scales: {
-            yAxes: [{
-                ticks: {
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return '$' + value;
-                    },
-                    suggestedMin: 0,
-                    suggestedMax: 700
-                }
-            }]
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 2500
+            }
+          }]
         }
-    }
-        
-    
-});
+      }
+    });
 
-var ctx = document.getElementById('unit_condo').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'bar',
-
-    // The data for our dataset
-    data: {
-        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.', '2019 Jan.'],
+    var ctx = document.getElementById('price_condo').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.',
+          'Dec.', '2019 Jan.'
+        ],
         datasets: [{
-            backgroundColor: '#008000',
-            data: [785, 806, 1038, 1102, 1191, 1190, 1080, 1105, 867, 952, 797, 701, 592]
+          backgroundColor: '#008000',
+          data: [410, 426, 418, 430, 428, 430, 432, 429, 428, 415, 400, 405, 412]
         }]
-    },
-
-    // Configuration options go here
-    options: {
+      },
+      // Configuration options go here
+      options: {
         legend: {
-            display: false,
+          display: false,
         },
         title: {
-            display: true,
-            text: '          Number of condos sold',
-            fontFamily: "'Lato', regular",
-            fontSize: 14,
-            fontColor: '#000000'
+          display: true,
+          text: '            Median sale price (thousands)',
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontColor: '#000000'
         },
         scales: {
-            yAxes: [{
-                ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 2500
-                }
-            }]
+          yAxes: [{
+            ticks: {
+              // Include a dollar sign in the ticks
+              callback: function (value, index, values) {
+                return '$' + value;
+              },
+              suggestedMin: 0,
+              suggestedMax: 700
+            }
+          }]
         }
-    }
-});
-    </script>
+      }
+    });
+
+    var ctx = document.getElementById('unit_condo').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ['2018 Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.',
+          'Dec.', '2019 Jan.'
+        ],
+        datasets: [{
+          backgroundColor: '#008000',
+          data: [785, 806, 1038, 1102, 1191, 1190, 1080, 1105, 867, 952, 797, 701, 592]
+        }]
+      },
+      // Configuration options go here
+      options: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: '          Number of sales',
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontColor: '#000000'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 2500
+            }
+          }]
+        }
+      }
+    });
+  </script>
 </body>
 </html>
