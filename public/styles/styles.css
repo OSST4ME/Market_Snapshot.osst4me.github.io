@@ -88,7 +88,44 @@ hr.new4 {
 
 
 /* START COMMENT SECTION */
-* {box-sizing: border-box;}
+* {box-sizing: border-box;
+text-align: center;
+}
+.row-inline {
+  height: 25%;
+}
+#left {
+  float: left;
+  width: 25%;
+  height: 25%;
+  color: #fff;
+  background: #30948D;
+}
+
+#middle-left {
+  float: left;
+  width: 25%;
+  height: 25%;
+  color: #fff;
+  background: #9E1212;
+}
+
+#right {
+  float: right;
+  width: 25%;
+  height: 25%;
+  color: #fff;
+  background: rgb(29, 207, 29);
+}
+
+#middle-right {
+  float: right;
+  width: 25%;
+  height: 25%;
+  color: #fff;
+  background: #30948D;
+}
+
 
 input[type=text], select, textarea {
   width: 100%;
