@@ -59,32 +59,6 @@
         <h3 class="h3">Year-over-year change</h3>
       </div>
     </div>
-<<<<<<< HEAD
-</div><br>
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <canvas id="price_house" height="200"></canvas>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <canvas id="unit_house" height="200"></canvas>
-    </div>
- 
-</div>
-<!--end row-->
-<hr class="new4">
-<h4 class="h4">
-RESALE CONDIMINIUMS
-</h4>
-<div class="row">
-  <div class="col-md-4 displayNumbersLeft">
-    <h2 class="h2">592</h2>
-    <h3 class="h3">Number of Sales </h3>
-    </div>
-  
-  <div class="col-md-4 displayNumbers"> 
-    <h2 class="h2">$412,000</h2>
-         <h3 class="h3">Median sale price for January</h3>
-=======
     <!--home charts-->
     <div class="row row-chart">
       <div class="col-lg-6 col-md-6 col-sm-12">
@@ -93,7 +67,6 @@ RESALE CONDIMINIUMS
       <div class="col-lg-6 col-md-6 col-sm-12">
         <canvas id="unit_house" height="200"></canvas>
       </div>
->>>>>>> master
     </div>
     <!--condos-->
     <hr class="new4">
@@ -121,7 +94,6 @@ RESALE CONDIMINIUMS
         <canvas id="unit_condo" height="200"></canvas>
       </div>
     </div>
-<<<<<<< HEAD
 </div>
 <hr class="new4">
 <h4 class="h4">
@@ -131,27 +103,7 @@ COMMENTS
 
 <div id="approvedComments"></div>
 <!-- figure out how to get comments in these divs, but only have 4 on display using mysql-->
-<div class="container"> 
-        <div class="form-group col-lg-3 col-md-3 col-sm-12">
-            <label for="exampleFormControlTextarea1">Example textarea 1</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-    
-        <div class="form-group col-lg-3 col-md-3 col-sm-12">
-            <label for="exampleFormControlTextarea1">Example textarea 2</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
 
-        <div class="form-group col-lg-3 col-md-3 col-sm-12">
-                <label for="exampleFormControlTextarea1">Example textarea 3</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-        <div class="form-group col-lg-3 col-md-3 col-sm-12">
-                <label for="exampleFormControlTextarea1">Example textarea 4</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-</form>
 <form>
     <div class="container"> 
     <div class="form-group">
@@ -179,41 +131,6 @@ COMMENTS
 
 <!--CHART.JS SCRIPT-->
 <script>
-=======
-    <!--comments-->
-    <hr class="new4">
-    <h4 class="h4">COMMENTS</h4>
-    <form action="/xxxxx/xxxxxx" method="POST">
-      <div class="form-group">
-        <textarea class="form-control" id="comment" rows="3" placeholder="Tell us what you love about the neighborhood."></textarea>
-      </div>
-      <div class="row">
-        <div class="col-lg-10 form-group">
-          <input type="email" class="form-control" id="email" placeholder="Email address (required)">
-        </div>
-          <div class="col-lg-2 padding">
-            <button type="submit" class="btn btn-block btn-secondary">SUBMIT</button>
-          </div>
-      </div>    
-    </form>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-          <p id="pub-comment">OMG! I LOVE NORTHPARK! The restaurants are great and you can walk everywhere. There is a ton of stuff to do. Blah blah blah blah blah blah.<strong id="pub-email"> email@address</strong></p>
-          <p id="pub-comment">OMG! I LOVE DOWNTOWN! The restaurants are great and you can walk everywhere. There is a ton of stuff to do. Blah blah blah blah blah blah.<strong id="pub-email"> email@address</strong></p>
-        </div>  
-      </div>
-      <!--footer-->
-    <footer>
-        <p>This data was compiled by CoreLogic and is derived from official San Diego records and includes nearly all sales. It does not include new construction. The median price is the midpoint of home values, with half being above and half below.
-        </p>
-        <p> &copy; 2019 GROUP NAME: Corbin Felsheim, James Ravenscroft, Gregory Schmidt & Gina Washington</p>
-      </footer>
-  </div>
-  
-
-  <!--CHART.JS SCRIPT-->
-  <script>
->>>>>>> master
     var ctx = document.getElementById('price_house').getContext('2d');
     var chart = new Chart(ctx, {
       // The type of chart we want to create
