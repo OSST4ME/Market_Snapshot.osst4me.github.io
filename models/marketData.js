@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
     Housing.associate = function(models) {
         //associating a housing record with a comment
         Housing.hasMany(models.Comment, {
-           
+           foreignKey: "HousingId"
         })
     }
     return Housing;
