@@ -29,7 +29,13 @@
     <form action="/xxxxx/xxxxxx" method="GET">
       <div class="row">
         <div class="col-lg-10"> 
-            <select class="form-control options" id="zip_code" size="1">
+            <select 
+              class="form-control options" 
+              id="zip_code" 
+              onfocus='this.size=5;'
+              onchange='this.size=1;'
+              onblur='this.size=1;'
+              this.blur();>
               <option value="{{}}">Choose a ZIP Code</option>
               <option>2</option>
               <option>3</option>
