@@ -1,11 +1,12 @@
 {
   "development": {
     "username": "root",
-    "password": "student",
-    "database": "market_snapshot",
+    "password": "1205Pacific!",
+    "database": "housing",
     "host": "localhost",
     "dialect": "mysql"
   },
+  
   "test": {
     "username": "root",
     "password": null,

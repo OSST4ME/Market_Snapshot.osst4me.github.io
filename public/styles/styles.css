@@ -74,6 +74,12 @@ hr.new4 {
   color:#008000;
 }
 
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
 /* START COMMENT SECTION */
 * {box-sizing: border-box;}
 
