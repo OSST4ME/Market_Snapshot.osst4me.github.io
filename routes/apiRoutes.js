@@ -149,25 +149,35 @@ module.exports = function (app) {
     db.Housing.findAll({
       where: {
         zipConcat: req.params.zip
-      }
+      },
+      include: [
+        db.Comment
+      ]
     }).then(function (dbReturn) {
-      console.log("it returned the data");
       var dbLength = dbReturn.length - 1;
-      console.log("db length -1 is" + dbLength)
       var chartMonths = [];
       var houseChartMedian = [];
       var houseChartSales = [];
       var condoChartMedian = [];
       var condoChartSales = [];
+      var allComments = [];
+      var allCommentEmails = [];
+      for (j=0;j<4; j++){
+        if (dbReturn[0].Comments[j] !== undefined){
+        allComments.push(dbReturn[0].Comments[j].Comment_Text)
+        allCommentEmails.push(dbReturn[0].Comments[j].Email)
+      }}
       //get all the chart data
       for (i = 0; i < dbReturn.length; i++) {
         chartMonths.push(dbReturn[i].Month);
         houseChartMedian.push(dbReturn[i].housePrice);
         houseChartSales.push(dbReturn[i].houseUnits);
         condoChartMedian.push(dbReturn[i].condoPrice);
-        condoChartSales.push(dbReturn[i].condoUnits)
+        condoChartSales.push(dbReturn[i].condoUnits);
+        
       }
-      console.log("Our return lengths latest month is at position " + dbLength)
+      console.log("comments " + allComments)
+      
       res.render("index", {
         //all the data for the green headers
         availableZips: availableZipsArray,
@@ -181,18 +191,24 @@ module.exports = function (app) {
         houseChartMedData: houseChartMedian,
         houseChartSalesData: houseChartSales,
         condoChartMedData: condoChartMedian,
-        condoChartSalesData: condoChartSales
+        condoChartSalesData: condoChartSales,
+        commentText: allComments,
+        emailName: allCommentEmails
       });
     });
   });
 
-  app.post("/housing/:zip/:id", function (req, res) {
+  app.post("/housing/:zip", function (req, res) {
+    console.log(req.body)
+    var houseId = req.body.HousingId
+    var comment = req.body.comment
     db.Comment.create({
       zipConcat: req.params.zip,
-      Comment_Text: req.body.comment,
-      Email: req.body.email
-    }).then(function (dbReturn) {
-      res.redirect("/housing/:zip/:id")
+      Comment_Text: comment,
+      Email: req.body.email,
+      HousingId: houseId
+    }).then(function(){
+      res.redirect(req.get('referer'))
     })
   })
 

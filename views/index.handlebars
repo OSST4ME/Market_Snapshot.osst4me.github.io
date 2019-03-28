@@ -74,7 +74,7 @@
   <!--comments-->
   <hr class="new4">
   <h4 class="h4">COMMENTS</h4>
-  <form action="/housing/xxxxxx" method="POST">
+  <form>
     <div class="form-group">
       <textarea class="form-control" name="comment" id="comment" rows="3"
         placeholder="Tell us what you love about the neighborhood."></textarea>
@@ -84,15 +84,21 @@
         <input type="email" class="form-control" name="email" id="email" placeholder="Email address (required)">
       </div>
       <div class="col-lg-2 padding">
-        <button type="submit" class="btn btn-block btn-secondary">SUBMIT</button>
+        <button type="submit" id="commentButton" class="btn btn-block btn-secondary">SUBMIT</button>
       </div>
     </div>
   </form>
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <p id="pub-comment">OMG! I LOVE NORTHPARK! The restaurants are great and you can walk everywhere. There is a ton
-        of stuff to do. Blah blah blah blah blah blah.<strong id="pub-email"> email@address</strong></p>
-      <p id="pub-comment">{{xxxxxxx}}<strong id="pub-email"> {{xxxxxxx}}</strong></p>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      {{#each commentText}}
+          <p id="pub-comment">{{this}}</p>
+      {{/each}}
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      {{#each emailName}}
+      <strong id="pub-email"> {{this}}</strong></p>
+      {{/each}}
+    </div>
     </div>
   </div>
   <!--footer-->
@@ -108,8 +114,10 @@
 
 <!--CHART.JS SCRIPT-->
 <script>
-  $("#zipSearch").on("click", function(){
+  var pickedZip  = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+
   
+  $("#zipSearch").on("click", function(){
   var pickedZip  = $("#zip_code").val();
   console.log(pickedZip)
   $.ajax({
@@ -118,8 +126,142 @@
   success: function (data){
     window.location.href = window.location.origin + "/housing/" + pickedZip
   }
+})
+});
 
-})});
+
+
+$("#commentButton").on("click", function(event){
+  event.preventDefault();
+  var availableZipsArray = [
+  "Allied Gardens-92120",
+    "Alpine-91901",
+    "Bay Park-92110",
+    "Bonita-91902",
+    "Bonsall-92003",
+    "Borrego Springs-92004",
+    "Boulevard-91905",
+    "Campo-91906",
+    "Cardiff-by-the-Sea-92007",
+    "Carlsbad-92008",
+    "Carlsbad-92009",
+    "Carlsbad-92010",
+    "Carlsbad-92011",
+    "Carmel Valley-92130",
+    "Chula Vista-91910",
+    "Chula Vista-91911",
+    "Chula Vista-91913",
+    "Chula Vista-91914",
+    "Chula Vista-91915",
+    "Clairemont-92117",
+    "College Grove-92115",
+    "Coronado-92118",
+    "Del Mar-92014",
+    "Descanso-91916",
+    "Downtown-92101",
+    "Dulzura-91917",
+    "East San Diego-92102",
+    "East San Diego-92105",
+    "El Cajon-92019",
+    "El Cajon-92020",
+    "El Cajon-92021",
+    "Encanto-92114",
+    "Encinitas-92024",
+    "Escondido-92025",
+    "Escondido-92026",
+    "Escondido-92027",
+    "Escondido-92029",
+    "Fallbrook-92028",
+    "Hillcrest-92103",
+    "Imperial Beach-91932",
+    "Jacumba-91934",
+    "Jamul-91935",
+    "Julian-92036",
+    "La Jolla-92037",
+    "La Mesa-91941",
+    "La Mesa-91942",
+    "Lakeside-92040",
+    "Lemon Grove-91945",
+    "Linda Vista-92111",
+    "Logan Heights-92113",
+    "Mira Mesa-92126",
+    "Mission Village-92123",
+    "National City-91950",
+    "Normal Heights-92116",
+    "North Park-92104",
+    "Ocean Beach-92107",
+    "Oceanside-92054",
+    "Oceanside-92056",
+    "Oceanside-92057",
+    "Oceanside-92058",
+    "Pacific Beach-92109",
+    "Palomar Mountain-92060",
+    "Paradise Hills-92139",
+    "Pauma Valley-92061",
+    "Pine Valley-91962",
+    "Point Loma-92106",
+    "Potrero-91963",
+    "Poway-92064",
+    "Ramona-92065",
+    "Ranch Bernardo-92127",
+    "Ranch Bernardo-92128",
+    "Ranch Penasquitos-92129",
+    "Ranch Santa Fe-92067",
+    "Ranch Santa Fe-92091",
+    "Ranchita-92066",
+    "San Carlos-92119",
+    "San Diego-92108",
+    "San Diego-92112",
+    "San Marcos-92069",
+    "San Marcos-92078",
+    "San Ysidro-92173",
+    "Santa Ysabel-92070",
+    "Santee-92071",
+    "Scripps Ranch-92131",
+    "Solana Beach-92075",
+    "Sorrento Valley-92121",
+    "South San Diego-92154",
+    "Spring Valley-91977",
+    "Spring Valley-91978",
+    "Tierrasanta-92124",
+    "University City-92122",
+    "Valley Center-92082",
+    "Vista-92081",
+    "Vista-92083",
+    "Vista-92084",
+    "Warner Springs-92086"
+]
+  var pickedZip  = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+  pickedZip = unescape(pickedZip);
+  
+ 
+  for (i=0;i<availableZipsArray.length;i++){
+    if (pickedZip == availableZipsArray[i]){
+      var idPickedZip = i + 2
+    }
+  }
+
+  console.log("picked zip " + pickedZip);
+  var emailInput = $("#email").val();
+  var commentInput = $("#comment").val();
+  
+  console.log("id of picked Zip " + idPickedZip)
+  var newComment = {
+    comment: commentInput,
+    email: emailInput,
+    HousingId: idPickedZip
+  }
+  
+  console.log("to input the following comment " + newComment.comment)
+  $.ajax({
+    method: "POST",
+    url: "/housing/" + pickedZip,
+    data: newComment,
+    success: function (data){
+    window.location.href = window.location.href
+  }
+  })
+})
 
   var ctx = document.getElementById('price_house').getContext('2d');
   var chart = new Chart(ctx, {
@@ -192,7 +334,7 @@
         yAxes: [{
           ticks: {
             suggestedMin: 0,
-            suggestedMax: 2500
+            suggestedMax: 40
           }
         }]
       }
@@ -270,10 +412,12 @@
         yAxes: [{
           ticks: {
             suggestedMin: 0,
-            suggestedMax: 2500
+            suggestedMax: 40
           }
         }]
       }
     }
     });
+
+    
 </script>
