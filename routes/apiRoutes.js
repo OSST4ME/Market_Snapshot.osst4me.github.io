@@ -139,13 +139,15 @@ module.exports = function (app) {
         houseChartMedData: houseChartMedian,
         houseChartSalesData: houseChartSales,
         condoChartMedData: condoChartMedian,
-        condoChartSalesData: condoChartSales
+        condoChartSalesData: condoChartSales,
+        chosenArea : "Countywide"
       });
     });
   });
 
   // Load example page and pass in an example by id
   app.get("/housing/:zip", function (req, res) {
+    var chosenArea = req.params.zip
     db.Housing.findAll({
       where: {
         zipConcat: req.params.zip
@@ -193,7 +195,8 @@ module.exports = function (app) {
         condoChartMedData: condoChartMedian,
         condoChartSalesData: condoChartSales,
         commentText: allComments,
-        emailName: allCommentEmails
+        emailName: allCommentEmails,
+        chosenArea : chosenArea
       });
     });
   });

@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0
         },
         houseChange: {
-            type: DataTypes.DECIMAL(10,3),
+            type: DataTypes.DECIMAL(10,2),
             defaultValue: 0.000
         },
         houseFoot: {
@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0
         },
         condoChange: {
-            type: DataTypes.DECIMAL(10,3),
+            type: DataTypes.DECIMAL(10,2),
             defaultValue: 0.000
         },
         
