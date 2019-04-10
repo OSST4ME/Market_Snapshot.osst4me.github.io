@@ -1,12 +1,4 @@
-# Express App Starter [![Build Status](https://travis-ci.com/bburrier/express-ci-starter.svg?branch=master)](https://travis-ci.com/bburrier/express-ci-starter)
-
-Simple Node/Express CRUD application and scaffolding to help students quickly get started with a new project, with tests and CI support.
-
-- Node + Express
-- Sequelize
-- Handlebars
-- Mocha + Chai
-- Travis CI
+This project is designed to assist potential home buyers, home sellers, and real estate brokers keep up with current housing market trends throughout San Diego.  Just entering a zip code or city will bring up trends in pricing for single family homes as well as condominiums.
 
 ## Development Setup
 
@@ -26,8 +18,4 @@ npm test
 # Start node application
 npm start
 ```
-
-## Heroku Deployment
-1. Create application [https://devcenter.heroku.com/articles/git](https://devcenter.heroku.com/articles/git)
-2. Add on JawsDB [https://devcenter.heroku.com/articles/jawsdb](https://devcenter.heroku.com/articles/jawsdb)
 
